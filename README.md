@@ -12,8 +12,8 @@ Digital Asset Monetize Button
 ![prototype](images/2.PNG)
 
 # Real-world use-cases:
-1-I want to publish an asset and just give the people who pay the ability to view it.
-2-I want to give the people who pay the ability to compute the data.
+1-I want to publish an asset and just give the people who pay the ability to view it.  
+2-I want to give the people who pay the ability to compute the data.  
 3-I want to confirm my ownership, proof of existence, protect rights when I do something I want to sale it and when sale it sale it's rights.
 
 # Idea source from Dev Pramoth
