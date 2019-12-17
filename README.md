@@ -1,5 +1,5 @@
 # DAMB
-Digital Asset Monetize Button
+Ocean Digital Assets Marketplace for selling files&Data, giving ability to preview them and compute data.
 
 
 # How this works? 
