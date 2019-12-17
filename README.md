@@ -8,5 +8,5 @@ How this works?
 3. You publish this asset on the blockchain by signing using metamask. The account used to sign is the token receiving wallet. 
 4. Receive tokens for each download based on the traffic generated for the button. 
 
-(images/1.png)
-(images/2.png)
+(images/1.PNG)
+(images/2.PNG)
