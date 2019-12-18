@@ -2,7 +2,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import cx from 'classnames'
-import styles from '/Button.module.scss'
+import styles from './Button.module.scss'
 
 interface ButtonProps {
     children: string

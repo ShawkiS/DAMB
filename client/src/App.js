@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import getWeb3 from "./getWeb3";
-
+import UploadFileForm from "./components/organisms/UploadFileForm/index";
 import "./App.css";
 
 class App extends Component {
@@ -8,7 +8,9 @@ class App extends Component {
 
 
   render() {
-    <h1>Hello:)</h1>
+    return(
+      <UploadFileForm />
+    );
   }
 }
 
