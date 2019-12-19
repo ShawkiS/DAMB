@@ -1,54 +1,59 @@
-/* eslint-disable no-console */
-
 import { useEffect, useState } from 'react'
 import ipfsClient from 'ipfs-http-client'
+import { parseHTML } from '../utils'
 
 let ipfs: any = null
-let ipfsMessage = ''
 let ipfsVersion = ''
 
 export interface IpfsConfig {
-    protocol: string
-    host: string
-    port: string
+  protocol: string
+  host: string
+  port: string
 }
 
 export default function useIpfsApi(config: IpfsConfig) {
-    const [isIpfsReady, setIpfsReady] = useState(Boolean(ipfs))
-    const [ipfsError, setIpfsError] = useState('')
+  const [isIpfsReady, setIpfsReady] = useState(Boolean(ipfs))
+  const [ipfsError, setIpfsError] = useState('')
 
-    useEffect(() => {
-        async function initIpfs() {
-            if (ipfs !== null) return
+  useEffect(() => {
+    async function initIpfs() {
+      if (ipfs !== null) return
+      // eslint-disable-next-line
+      ipfs = await ipfsClient(config)
 
-            ipfsMessage = 'Checking IPFS gateway...'
+      try {
+        const version = await ipfs.version()
+        ipfsVersion = version.version
+      } catch (error) {
+        let { message } = error
 
-            try {
-                ipfs = await ipfsClient(config)
-                const version = await ipfs.version()
-                ipfsVersion = version.version
-                ipfsMessage = `Connected to ${config.host}`
-            } catch (error) {
-                setIpfsError(`IPFS connection error: ${error.message}`)
-            }
-            setIpfsReady(Boolean(await ipfs.id()))
+        if (!error.status) {
+          const htmlData = parseHTML(error)
+          message = htmlData.item(0)
+          message = message.textContent
         }
 
-        initIpfs()
-    }, [config])
+        setIpfsError(`IPFS connection error: ${message}`)
+        setIpfsReady(false)
+        return
+      }
+      setIpfsReady(Boolean(await ipfs.id()))
+    }
 
-    useEffect(() => {
-        // just like componentWillUnmount()
-        return function cleanup() {
-            if (ipfs) {
-                setIpfsReady(false)
-                ipfs = null
-                ipfsMessage = ''
-                ipfsVersion = ''
-                setIpfsError('')
-            }
-        }
-    }, [])
+    initIpfs()
+  }, [config])
 
-    return { ipfs, ipfsVersion, isIpfsReady, ipfsError, ipfsMessage }
+  useEffect(() => {
+    // just like componentWillUnmount()
+    return function cleanup() {
+      if (ipfs) {
+        setIpfsReady(false)
+        ipfs = null
+        ipfsVersion = ''
+        setIpfsError('')
+      }
+    }
+  }, [])
+
+  return { ipfs, ipfsVersion, isIpfsReady, ipfsError }
 }
