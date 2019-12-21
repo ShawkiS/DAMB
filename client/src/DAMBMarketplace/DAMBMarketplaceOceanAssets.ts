@@ -3,6 +3,8 @@ import { MetaData } from '@oceanprotocol/squid/dist/node/ddo/MetaData'
 import { Service } from '@oceanprotocol/squid/dist/node/ddo/Service'
 import Account from '@oceanprotocol/squid/dist/node/ocean/Account'
 import DID from '@oceanprotocol/squid/dist/node/ocean/DID'
+import {DAMBMarketplaceServices} from '../DAMBMarketplace/DAMBMarketplaceServices'
+
 import {
   fillConditionsWithDDO,
   SubscribablePromise

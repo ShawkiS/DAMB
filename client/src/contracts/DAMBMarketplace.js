@@ -1,4 +1,4 @@
-{
+export const DAMBMarketplace = {
   "contractName": "DAMBMarketplace",
   "abi": [
     {
