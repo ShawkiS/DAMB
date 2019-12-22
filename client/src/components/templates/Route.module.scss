@@ -1,0 +1,29 @@
+@import '../../styles/variables';
+
+.header {
+    margin-top: $spacer;
+    margin-bottom: $spacer;
+}
+
+.title {
+    margin: 0;
+    font-size: $font-size-h2;
+
+    @media (min-width: $break-point--small) {
+        font-size: $font-size-h1;
+    }
+}
+
+.description {
+    margin-top: $spacer / 2;
+    font-size: $font-size-large;
+}
+
+.titleReverse {
+    composes: title;
+    color: $brand-grey-light;
+
+    span {
+        color: $brand-grey-dark;
+    }
+}

@@ -52,7 +52,7 @@ h3,
 h4,
 h5 {
   font-family: var(--font-family-title);
-  color: var(--brand-white);
+  color: var(--brand-black);
   line-height: 1.2;
   font-weight: var(--font-weight-bold);
 }
